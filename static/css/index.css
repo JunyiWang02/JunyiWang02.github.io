@@ -155,3 +155,50 @@ body {
 #interpolation-image-wrapper img {
   border-radius: 5px;
 }
+/* --- teaser 2-video switcher --- */
+.teaser-switcher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.teaser-stage {
+  position: relative;
+  width: 100%;
+  max-width: 960px;
+}
+
+.teaser-video {
+  width: 100%;
+  height: auto;
+  display: none;          /* 默认隐藏 */
+  border-radius: 12px;
+}
+
+.teaser-video.is-active {
+  display: block;         /* 只显示当前激活的视频 */
+}
+
+.teaser-nav {
+  border: none;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  background: rgba(0,0,0,0.6);
+  color: #fff;
+  font-size: 28px;
+  line-height: 44px;
+  padding: 0;
+}
+
+.teaser-nav:hover {
+  background: rgba(0,0,0,0.75);
+}
+
+/* 缩小每个 section 之间的垂直间距（Bulma 默认很大）
+.section {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+} */

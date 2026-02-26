@@ -74,5 +74,42 @@ $(document).ready(function() {
     $('#interpolation-slider').prop('max', NUM_INTERP_FRAMES - 1);
 
     bulmaSlider.attach();
+    // --- teaser 2-video switcher ---
+    (function () {
+      const stage = document.querySelector('.teaser-stage');
+      if (!stage) return;
 
+      const videos = Array.from(stage.querySelectorAll('.teaser-video'));
+      const prevBtn = document.querySelector('.teaser-nav.prev');
+      const nextBtn = document.querySelector('.teaser-nav.next');
+
+      let idx = videos.findIndex(v => v.classList.contains('is-active'));
+      if (idx < 0) idx = 0;
+
+      function show(i) {
+        videos.forEach((v, k) => {
+          if (k === i) {
+            v.classList.add('is-active');
+            const p = v.play();
+            if (p && typeof p.catch === 'function') p.catch(() => {});
+          } else {
+            v.classList.remove('is-active');
+            v.pause();
+            v.currentTime = 0; // 可选：切走回到开头
+          }
+        });
+        idx = i;
+      }
+
+      prevBtn && prevBtn.addEventListener('click', () => {
+        show((idx - 1 + videos.length) % videos.length);
+      });
+
+      nextBtn && nextBtn.addEventListener('click', () => {
+        show((idx + 1) % videos.length);
+      });
+
+      // 初始化：确保当前激活视频在播
+      show(idx);
+    })();
 })
