@@ -197,8 +197,11 @@ body {
   background: rgba(0,0,0,0.75);
 }
 
-/* 缩小每个 section 之间的垂直间距（Bulma 默认很大）
-.section {
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-} */
+/* 让某些视频别占满整行 */
+.video-small {
+  width: 75%;
+  max-width: 720px;   /* 你想多大就改这里：640/720/800 都行 */
+  height: auto;
+  display: block;
+  margin: 0 auto;     /* 居中 */
+}
